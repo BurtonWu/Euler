@@ -1,0 +1,52 @@
+package euler;
+
+public class Euler27 {
+
+	public void run()
+	{
+		
+		int returnVal = 0;
+		int temp, max = 0;
+		for(int a = -999; a < 1000; a++)
+		{
+			for(int b = -999; b < 1000; b++)
+			{
+				temp = formula(a, b);
+				
+				if(temp > max)
+				{
+					max = temp;
+					returnVal = a*b;
+				}
+			}
+		}
+		System.out.println(returnVal);
+		
+	}
+	
+	public int formula(int a, int b)
+	{
+		int n = 0;
+		while(isPrime((int)Math.pow(n, 2) + a*n + b))
+		{
+			n++;
+		}
+		return n;
+	}
+	
+	public boolean isPrime(int num)
+	{
+		if(num < 2)
+		{
+			return false;
+		}
+		for(int i = 2; i*i <= num; i++)
+		{
+			if(num%i == 0)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+}
