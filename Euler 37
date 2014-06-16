@@ -1,0 +1,106 @@
+package euler;
+/**
+ * So I tried using Sieve and the regular division method, up until the SQroot of the  number. 
+ * Usually, I got that the regular div method was faster, this is well, 
+ * I read that div is usually faster numbers under 1million, and all the 
+ * numbers we needed for the answer was under 1million. my ROUGH implementation
+ *  of the two methods are in here and it outputs the time, using Nano because its more accurate than systemmillie.
+ */
+import java.util.Arrays;
+public class Euler37 
+{
+	public void run()
+	{
+		sieveFun();
+		divFun();
+		
+	}
+	public void sieveFun()
+	{
+	
+		long start = System.nanoTime();
+		boolean[] primes = sieve(1000000);
+		int ans = 0;
+		for(int i = 11; i < 1000000; i++)
+		{
+			if(primes[i])
+			{
+				if(truncatable(i))
+				{
+					ans += i;
+				}
+			}
+		}
+		long end = System.nanoTime();
+		System.out.println("ans "+ans);
+		System.out.println("Sieve time: "+(end-start));
+	}
+	public void divFun()
+	{
+		long start = System.nanoTime();
+		int ans = 0, total = 0, num = 11;
+		while(total < 11)
+		{
+			if(truncatable(num))
+			{
+				total++;
+				ans += num;
+			}
+			num += 2;
+		}
+		long end = System.nanoTime();
+		System.out.println("ans "+ans);
+		System.out.println("Divide time: "+(end-start));
+	}
+
+	public boolean truncatable(int n)
+	{
+		String num = String.valueOf(n);
+		if(!prime(Integer.parseInt(num)))
+		{
+			return false;
+		}
+		for(int i = 1; i < num.length(); i++)
+		{
+			if(!prime(Integer.parseInt(num.substring(0,num.length()-i))) || !prime(Integer.parseInt(num.substring(i,num.length()))))
+				return false;
+		}
+		return true;
+	}
+	
+	public boolean[] sieve(int limit)
+	{
+		boolean[] primes = new boolean[limit];
+		Arrays.fill(primes, Boolean.TRUE);
+		
+		for(int i = 2; i <= (int) Math.sqrt(primes.length); i++)
+		{
+			if(primes[i])
+			{
+				for(int j = i*i; j < primes.length; j += i)
+				{
+					if(j < 0)
+					{
+						break;
+					}
+					primes[j] = false;
+				}
+			}
+		}
+		primes[0] = false;
+		primes[1] = false;
+		return primes;
+	}
+	
+	public boolean prime(int n)
+	{
+		if((n%2 == 0 && n != 2) || n == 1)
+			return false;
+		for(int i = 3; i <= Math.sqrt(n); i+=2)
+		{
+			if(n%i == 0)
+				return false;
+		}
+		return true;
+	}
+}
