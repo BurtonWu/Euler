@@ -1,0 +1,89 @@
+package euler;
+
+
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
+public class Euler22 {
+
+	public void run()
+	{
+		ArrayList<String> order_names = new ArrayList<String>();	
+		java.io.File file = new java.io.File("C:/Users/Burton/Desktop/names.txt");
+		try
+		{
+			java.util.Scanner input = new java.util.Scanner(file);
+			String names = input.next() + ",";
+			String tempName = "";
+			for(int i = 0; i < names.length(); i++)
+			{
+				if(names.charAt(i) != ',')
+				{
+					tempName += names.charAt(i);
+				}
+				else
+				{
+					if(!order_names.isEmpty())
+					{
+							alpha(tempName.substring(1,tempName.length()-1), order_names);
+					}
+					else
+					{
+						order_names.add(tempName.substring(1,tempName.length()-1));
+					}
+					tempName = "";
+				}
+			}
+		}
+		catch(FileNotFoundException e)
+		{
+			System.err.format("no file");
+		}
+		score(order_names);
+	}
+	
+	public int alpha(String name, ArrayList<String> list)
+	{
+		int size = 0;
+		for(int i = 0; i < list.size(); i++)
+		{
+			size = (list.get(i).length() > name.length()) ? name.length() : list.get(i).length();
+			if(name.substring(0,size).compareTo(list.get(i).substring(0,size)) < 0)
+			{
+				list.add(i, name);
+				return 0;
+			}
+			else if(name.substring(0,size).compareTo(list.get(i).substring(0,size)) == 0)
+			{
+				if(name.length() < list.get(i).length())
+				{
+					list.add(i, name);
+					return 0;
+				}
+				else
+				{
+					continue;
+				}
+			}
+		}
+		list.add(name);
+		return 0;
+	}
+	
+	public void score(ArrayList<String> list)
+	{
+		long sum = 0L;
+		int tempSum;
+		for(int k = 0; k < list.size(); k++)
+		{
+			tempSum = 0;
+			for(int a = 0; a < list.get(k).length(); a++)
+			{
+				tempSum += list.get(k).charAt(a) - 64;	
+			}
+			tempSum *= k+1;
+			sum += tempSum;
+		}	
+		System.out.println(sum);
+	}
+}
