@@ -1,0 +1,26 @@
+package euler;
+
+import java.math.BigInteger;
+
+public class Euler25 
+{
+	public void run()
+	{
+		int fibseq = 1;
+		BigInteger temp;
+		BigInteger prior = new BigInteger("0");
+		BigInteger present = new BigInteger("1");
+		while(true)
+		{
+			temp = new BigInteger(present.toString());
+			present = present.add(prior);
+			prior = new BigInteger(temp.toString());
+			fibseq++;
+			if(present.toString().length() == 1000)
+			{
+				System.out.println(fibseq);
+				break;
+			}
+		}
+	}
+}
