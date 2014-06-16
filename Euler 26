@@ -1,0 +1,56 @@
+package euler;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+public class Euler26 {
+
+	public void run()
+	{
+		BigDecimal numerator = new BigDecimal("1");
+		BigDecimal denominator;
+		BigDecimal quotient;
+		int index = 2;
+		int fib = 0;
+		BigDecimal max = new BigDecimal("0");
+		BigDecimal temp = new BigDecimal("0");
+		while(index <= 1000)
+		{
+			denominator = new BigDecimal(String.valueOf(index));
+			quotient = numerator.divide(denominator, 20001, RoundingMode.CEILING);
+			temp = repeatAmt(quotient, quotient.toString().length());
+			
+			if(temp.toString().length() > max.toString().length())
+			{
+				max = temp;
+				fib = index;
+			}
+			index++;
+			System.out.println(index);
+			
+		}
+		
+		System.out.println("fib: "+fib);
+	}
+	
+	public BigDecimal repeatAmt(BigDecimal quotient, int len)
+	{
+		BigDecimal repeat = new BigDecimal("0");
+		for(int j = 1; j < 3; j++)
+		{
+			for(int i = 3; i < (len/2)+2; i++)
+			{
+				if(quotient.toString().substring(2,i).equals(quotient.toString().substring(i, i+(i-(2)))))
+				{
+					if(Integer.parseInt(quotient.toString().substring(2,10)) == 0)
+					{
+						continue;
+					}
+					repeat = new BigDecimal(quotient.toString().substring(0,i));
+					break;
+				}
+			}
+		}
+		return repeat;
+	}
+}
