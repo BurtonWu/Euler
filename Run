@@ -1,0 +1,14 @@
+package euler;
+
+import java.math.BigDecimal;
+
+public class Run {
+
+	public static void main(String args[])
+	{
+		Euler38 e = new Euler38();
+		e.run();
+		
+	}
+	
+}
