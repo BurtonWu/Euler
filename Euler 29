@@ -1,0 +1,22 @@
+package euler;
+
+import java.math.BigInteger;
+import java.util.HashSet;
+
+public class Euler29 
+{
+	public void run()
+	{
+		HashSet<String> list2 = new HashSet<String>();
+		BigInteger tempB;
+		for(int a = 2; a <= 100; a++)
+		{
+			for(int b = 2; b <= 100; b++)
+			{
+				tempB = new BigInteger(String.valueOf(b));
+				list2.add(tempB.pow(a).toString());
+			}
+		}
+	System.out.println(list2.size());
+	}
+}
