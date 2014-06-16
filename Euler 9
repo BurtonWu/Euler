@@ -1,0 +1,26 @@
+package euler;
+
+public class Euler09 
+{
+	public void run()
+	{
+		for(int a = 1; a < 1000; a++)
+	    {
+			for(int b = 1; b < 1000; b++)
+	        {
+				if(b > a)
+	            {
+	               double c = (a*a) + (b*b);
+	               c = Math.sqrt(c);
+	               if(a+b+c == 1000)
+	               {
+	                  double total = a+b+c;
+	                  double mult = a*b*c;
+	                  System.out.println("a: "+a+" b: "+b+" c: "+c+" total is: "+total);
+	                  System.out.println("multiple: "+mult);
+	               }
+	            }
+	         }
+	     }
+	}
+}
