@@ -1,0 +1,34 @@
+package euler;
+
+public class Euler34 {
+
+	public void run()
+	{
+		int[] arr = new int[10];
+		String num = "";
+		int total, ans = 0;
+		for(int i = 10; i <= 40585; i++)
+		{
+			total = 0;
+			num = String.valueOf(i);
+			for(int j = 0; j < num.length(); j++)
+			{
+				total +=  factorial(Character.getNumericValue(num.charAt(j)));
+			}
+			if(total == i)
+			{
+				ans += i;
+			}
+		}
+		System.out.println(ans);
+	}
+	public int factorial(int n)
+	{
+		int total = 1;
+		for(int i = n; i > 1; i--)
+		{
+			total *= i; 
+		}
+		return total;
+	}
+}
