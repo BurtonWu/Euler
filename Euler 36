@@ -1,0 +1,32 @@
+package euler;
+
+public class Euler36 {
+
+	public void run()
+	{
+		int total = 0;
+		for(int i = 0; i < 1000000; i++)
+		{
+			if(pal(revBinary(String.valueOf(i))) && pal(String.valueOf(i)))
+				total += i;
+		}
+		System.out.println(total);
+	}
+	public String revBinary(String n)
+	{
+		int dividend = Integer.parseInt(n);
+		if(2 <= dividend)
+			return String.valueOf(dividend%2) + revBinary(String.valueOf(dividend/2));
+		else
+			return n;
+	}
+	public boolean pal(String n)
+	{
+		for(int i = 0; i < n.length()/2; i++)
+		{
+			if(n.charAt(i) != n.charAt(n.length()-i-1))
+				return false;
+		}
+		return true;
+	}
+}
