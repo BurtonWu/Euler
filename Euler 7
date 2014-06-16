@@ -1,0 +1,31 @@
+package euler;
+
+public class Euler07 {
+
+	public void run()
+	{
+		int counter = 1;
+	      int num = 1;
+	      while(true)
+	      {
+	         for(int j = 2; j < num; j++)
+	         {
+	            if(num%j == 0)
+	            {
+	               break;
+	            }
+	            if(j == num-1 && num%j != 0)
+	            {
+	               counter++;
+	               break;
+	            }
+	         }
+	         if(counter == 10001)
+	         {
+	            System.out.println(num);
+	            break;
+	         }
+	         num+=2;
+	      }
+	}
+}
