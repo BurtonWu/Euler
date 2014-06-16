@@ -1,0 +1,22 @@
+package euler;
+
+public class Euler10 {
+
+	public void run()
+	{
+		int num = 3;
+	    long primeSum = 5L;
+	    while(num < 2000000)
+	    {
+	       for(int i = 3; i <= num; i++)
+	       {
+	          if(num%i == 0)
+	             break;
+	          else if(i == num-1)
+	               primeSum += num;
+	        }
+	        num+=2;
+	    }
+	  System.out.println(primeSum);
+	}
+}
