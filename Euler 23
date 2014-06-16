@@ -1,0 +1,68 @@
+package euler;
+
+import java.util.ArrayList;
+
+public class Euler23 {
+
+	public void run()
+	{
+		int index = 0;
+		ArrayList<Integer> temp = new ArrayList<Integer>();
+		for(int i = 1; i <= 28123; i++)
+		{
+			if(abun(i) > 0)
+			{
+				temp.add(i);
+				index++;
+			}
+		}
+		
+		int[] num = new int[temp.size()];
+		for(int i = 0; i < temp.size(); i++)
+		{
+			num[i] = temp.get(i);
+		}
+		//num is all the abundant integers < 28123
+		int total = 0;
+		int[] numbers = new int[28124];
+		
+		for(int i = 0; i < 28124; i++)
+		{
+			numbers[i] = i;
+		}
+		
+		for(int i = 0; i < num.length; i++)
+		{
+			for(int j = i; j < num.length; j++)
+			{
+				if(num[i]+num[j] <= 28123)
+				{
+					numbers[num[i]+num[j]] = 0;
+				}
+			}
+		}
+		
+		for(int i = 0; i < numbers.length; i++)
+		{
+			total += numbers[i];
+		}
+		System.out.println(total);
+	}
+	
+	public int abun(int num)
+	{
+		int sum = 0;
+		for(int i = num/2; i > 0; i--)
+		{
+			if(num%i == 0)
+			{
+				sum += i;
+			}
+		}
+		if(sum > num)
+		{
+			return sum;
+		}
+		return 0;
+	}
+}
