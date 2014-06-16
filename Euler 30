@@ -1,0 +1,24 @@
+package euler;
+
+public class Euler30 
+{
+	public void run(){
+		
+        int tempTotal;
+        long retval = 0L;
+        for(int i = 2; i <= 194979; i++)
+        {
+            tempTotal = 0;
+            String num = String.valueOf(i);
+            for(int j = 0; j < num.length(); j++)
+            {
+                tempTotal += Math.pow((int)(num.charAt(j)-48), 5);
+            }
+            if(tempTotal == i)
+            {
+            	retval += tempTotal;
+            }
+        }
+        System.out.println(retval);
+	}
+}
