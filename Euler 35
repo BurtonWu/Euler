@@ -1,0 +1,46 @@
+package euler;
+
+public class Euler35 {
+
+	public void run()
+	{
+		boolean primeAll;
+		int temp;
+		int total = 4;
+		for(int i = 10; i < 1000000; i++)
+		{
+			temp = i;
+			primeAll = true;
+			for(int j = 0; j < Math.floor(Math.log10(i))+1; j++)
+			{
+				if(!prime(temp))
+				{
+					primeAll = false;
+					break;
+				}
+				temp = rotation(temp);
+			}
+			if(primeAll)
+				total++;
+		}
+		System.out.println("total: " + total);
+	}
+	
+	public int rotation(int n)
+	{
+		String num = String.valueOf(n);
+		num = num.charAt(num.length()-1) + num.substring(0,num.length()-1);
+		return Integer.parseInt(num);
+	}
+	public boolean prime(int n)
+	{
+		if(n%2 == 0)
+			return false;
+		for(int i = 3; i <= Math.sqrt(n); i+=2)
+		{
+			if(n%i == 0)
+				return false;
+		}
+		return true;
+	}
+}
