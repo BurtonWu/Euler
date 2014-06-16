@@ -4,7 +4,7 @@ public class Euler07 {
 
 	public void run()
 	{
-		int counter = 1;
+	      int counter = 1;
 	      int num = 1;
 	      while(true)
 	      {
