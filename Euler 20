@@ -1,0 +1,27 @@
+package euler;
+
+import java.math.BigInteger;
+
+public class Euler20 
+{
+
+	public void run()
+	{
+		int sum = 0;
+			BigInteger tempNum = new BigInteger("100");
+			BigInteger tempMultiInt;
+			String tempMultiStr;
+			for(int j = 100; j > 0; j--)
+			{
+				tempMultiStr = String.valueOf(j);
+				tempMultiInt = new BigInteger(tempMultiStr);
+				tempNum = tempNum.multiply(tempMultiInt);
+			}
+		String tempStr = tempNum.toString();
+		for(char ch : tempStr.toCharArray())
+		{
+			sum += ch - 48;
+		}
+		System.out.println(sum);
+	}
+}
