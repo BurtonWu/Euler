@@ -1,0 +1,30 @@
+package euler;
+
+public class Euler04 {
+
+	public void run()
+	{
+		int max = 0;
+		for(int i = 100; i <= 999; i++)
+		{
+			for(int j = i; j <= 999; j++)
+			{
+				if(pal(i*j))
+					if(i*j > max)
+						max = i*j;
+			}
+		}
+		System.out.println(max);
+	}
+	
+	public boolean pal(int n)
+	{
+		String num = String.valueOf(n);
+		for(int i = 0; i < num.length()/2; i++)
+		{
+			if(num.charAt(i) != num.charAt(num.length()-i-1))
+				return false;
+		}
+		return true;
+	}
+}
