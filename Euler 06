@@ -1,0 +1,17 @@
+package euler;
+
+public class Euler06 
+{
+
+	public void run()
+	{
+		int naturalNum = 0, squareNum = 0;
+		for(int i = 1; i <= 100; i++)
+		{
+			naturalNum += i*i;
+			squareNum += i;
+		}
+		squareNum *= squareNum;
+		System.out.println(squareNum - naturalNum);
+	}
+}
