@@ -1,0 +1,28 @@
+package euler;
+
+public class Euler03 {
+
+	public void run()
+	{
+		long num = 600851475143L;
+		for(int i = (int) Math.sqrt(600851475143.0); i > 0; i--)
+		{
+			if(prime(i) && num%i == 0)
+			{
+				System.out.println(i);
+				break;
+			}
+		}
+			
+	}
+	
+	public boolean prime(int n)
+	{
+		for(int i = 2; i <= Math.sqrt(n); i++)
+		{
+			if(n%i == 0)
+				return false;
+		}
+		return true;
+	}
+}
