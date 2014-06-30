@@ -1,6 +1,8 @@
+package euler;
+
 public class Euler08
 {
-	private int tempNum;
+	private long tempNum;
 	public void run()
 	{
 		String num = 
@@ -26,11 +28,11 @@ public class Euler08
 				"71636269561882670428252483600823257530420752963450";
 		
 		String tempString = "";
-		int index,max = 0;
-		for(int i = 0; i <= num.length()-5; i++)
+		long index,max = 0L;
+		for(int i = 0; i <= num.length()-13; i++)
 		{
-			tempNum = 1;
-			tempString = num.substring(i,i+5);
+			tempNum = 1L;
+			tempString = num.substring(i,i+13);
 			index = zeros(tempString);
 			
 			if(index > -1)
