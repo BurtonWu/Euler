@@ -1,0 +1,28 @@
+package euler;
+
+public class Euler05 
+{
+	public void run()
+	{
+		int num = 20;
+		while(true)
+		{
+			if(divisible(num))
+			{
+				break;
+			}
+			num++;
+		}
+		System.out.println(num);
+	}
+	
+	public boolean divisible(int n)
+	{
+		for(int i = 1; i <= 20; i++)
+		{
+			if(n%i != 0)
+				return false;
+		}
+		return true;
+	}
+}
