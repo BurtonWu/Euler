@@ -1,0 +1,57 @@
+/*
+As a starter, based on the relation
+   a^2+b^2 = c^2  (1)
+If both a and b are even, c will also be even and P (the perimeter) will be even.
+If both a and b are odd, c will be even and P will be even.
+If one is even and the other is odd, c will be odd and P will again be even.
+Therefore, only even values of P need to be checked.
+*/
+
+class Program
+    {
+        static Boolean isRightTriangle(int c, int sum)
+        {
+            for (int i = 1; i < sum; i++)
+            {
+                if (helper(i, sum - i, c))
+                    return true;
+            }
+            return false;
+        }
+
+        static Boolean helper(int a, int b, int c)
+        {
+            return (a * a) + (b * b) == (c * c);
+        }
+
+        static void Main(string[] args)
+        {
+            int p = 1000;
+            int threshold, c, count;
+            int max = 0;
+            int maxp = 0;
+
+            while (p != 0)
+            {
+                c = p / 2;
+                threshold = c / 2;
+                count = 0;
+                while (c > threshold)
+                {
+                    if (isRightTriangle(c, p - c))
+                    {
+                        count++;
+                    }
+                    c--;
+                }
+                if (count > max)
+                {
+                    max = count;
+                    maxp = p;
+                }
+                p--;
+            }
+            Console.WriteLine("max is " + max + " p is " + maxp);
+            Console.ReadLine();
+        }
+    }
