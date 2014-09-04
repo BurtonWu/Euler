@@ -1,0 +1,30 @@
+Did by hand this one.
+
+
+for 10th digit, it is [1]0
+
+for 100th digit, 45 doubles, + 9 singles, so 45 + 9 = 51. for the 45*2+9 = 99th place is 52, [5]3
+
+for 1000th digit, 269 triples + 91 doubles + 9 singles = 998th place, for 369, 3[7]0
+
+for 10000th digit, 1777quad + 900 triples + 91 doubles + 9 singles = 9999place for 2777, [2]778
+
+for 100,000th digit 12183quin + 9000quad + 900 triples + 91 doubles + 9 singles = 99,997 for 22183, 22[1]84
+            
+for 1,000,000th digit 85153 sec + 90,000quin + 9000quad + 900 triples + 91 doubles + 9 singles = 18515[3]
+
+            
+            9
+            91  (191)
+            900 (2891)
+            9000 (39082)
+            90000 (489082)
+
+
+            int[] num = { 1, 5, 7, 2, 1, 3 };
+            int sum = 1;
+            for (int i = 0; i < 6; i++)
+            {
+                sum *= num[i];
+            }
+            Console.WriteLine(sum);
