@@ -1,0 +1,55 @@
+using System;
+
+namespace euler
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			string text = System.IO.File.ReadAllText(@"/Users/Rena/Projects/euler/euler/word.txt");
+			String[] words = wordSplit (text);
+			int total = 0;
+			foreach (String w in words) 
+			{
+				//Console.WriteLine (tValue (w));
+				if (isTriangle (tValue(w)))
+				{
+					total++;
+				}
+			}
+			Console.WriteLine (total);
+		}
+
+		public static String[] wordSplit(String textString)
+		{
+			return textString.Split (new char[]{ ',', '\"' });
+		}
+
+		public static int tValue(String word)
+		{
+			int total = 0;
+			foreach (char letter in word) 
+			{
+				total += letter - 64;
+			}
+			return total;
+		}
+
+		public static Boolean isTriangle(int tvalue)
+		{
+			int start = 1;
+			int incrementor = 2;
+			while (start <= tvalue) 
+			{
+				if (start == tvalue) 
+				{
+					return true;
+				}
+				start += incrementor;
+				incrementor++;
+			}
+			return false;
+		}
+
+	}
+}
