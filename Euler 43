@@ -1,0 +1,55 @@
+using System;
+using System.Collections.Generic;
+
+namespace euler
+{
+	class MainClass
+	{
+		public static void Main (string[] args)
+		{
+			List<String> numbers = new List<String>();
+			String[] original = { "0","1","2","3","4","5","6","7","8","9" };
+			lexo (0, original, numbers);
+
+			Int64 sum = 0;
+			foreach (String num in numbers) 
+			{
+				if (divProp (num))
+					sum+= Int64.Parse(num);
+			}
+			Console.WriteLine (sum);
+		}
+		public static Boolean divProp(String number)
+		{
+			Int32[] div = { 2, 3, 5, 7, 11, 13, 17 };
+			for (int i = 0; i < div.Length; i++)
+			{
+				if ((Int32.Parse(number.Substring(i+1,3)) % div [i]) != 0)
+					return false;
+			}
+			return true;
+		}
+		public static void lexo(int tier, String[] nums, List<String> numbers)
+		{
+			int perm = tier;
+			for (int i = tier; i < nums.Length; i++)
+			{
+				String[] tempOriginal = new String[nums.Length];
+				nums.CopyTo(tempOriginal,0);
+				String temp = tempOriginal[perm];
+				tempOriginal[perm] = tempOriginal[i];
+				tempOriginal[i] = temp;
+				lexo(perm + 1, tempOriginal, numbers);
+				if (perm == tempOriginal.Length - 1)
+				{
+					String number = String.Join ("", tempOriginal);
+					if (true) {
+						numbers.Add (number);
+					}
+				}
+			}
+		}
+
+
+	}
+}
