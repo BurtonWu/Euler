@@ -1,0 +1,43 @@
+namespace euler2
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            for (long t = 999999999; t < 1599999999; t++)
+            {
+                if(isTri(t))
+                {
+                    if (isPenta(t))
+                    {
+                        if(isHex(t))
+                        {
+                            Console.WriteLine(findTri(t) + "num: " + t);
+                        }
+                    }
+                }
+            }
+            Console.WriteLine("done");
+            Console.ReadLine();
+        }
+        public static Boolean isPenta(long x)
+        {
+            var n = (Math.Sqrt(24 * x + 1) + 1) / 6;
+            return n % 1 == 0 ? true : false;
+        }
+        public static Boolean isTri(long x)
+        {
+            var n = (Math.Sqrt(8 * x + 1) - 1) / 2;
+            return n % 1 == 0 ? true : false;
+        }
+        public static Double findTri(long x)
+        {
+            return (Math.Sqrt(8 * x + 1) - 1) / 2;
+        }
+        public static Boolean isHex(long x)
+        {
+            var n = (Math.Sqrt(8 * x + 1) + 1) / 4;
+            return n % 1 == 0 ? true : false;
+        }
+    }
+}
