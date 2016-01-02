@@ -1,0 +1,54 @@
+class Program
+    {
+        static void Main(string[] args)
+        {
+            var first = 647;
+            while (true)
+            {
+                if (primable4(first))
+                {
+                    Console.WriteLine("first");
+                    Console.WriteLine(first);
+                    Console.ReadLine();
+                }
+                first++;
+            }
+        }
+
+        public static bool primable4(int num)
+        {
+            var factors = new List<int>();
+            for(var i = num; i < num + 4; i++)
+            {
+                if (getPrimeFactors(i).Distinct().Count() < 4)
+                    return false;
+            }
+            return true;
+        }
+
+        public static IEnumerable<int> getPrimeFactors(int num)
+        {
+            var factors = new List<int>();
+            var len = num / 2;
+            for (var i = 1; i <= len; i++)
+            {
+                if (num % i == 0 && isPrime(i))
+                {
+                    factors.Add(i);
+                }
+            }
+            return factors;
+        }
+
+        public static bool isPrime(int num)
+        {
+            if (num < 2)
+                return false;
+            for (int i = 2; i * i <= num; i++)
+            {
+                if (num % i == 0)
+                    return false;
+            }
+            return true;
+        }
+    }
