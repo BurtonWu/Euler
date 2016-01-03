@@ -1,0 +1,31 @@
+ class Program
+    {
+        static void Main(string[] args)
+        {
+            var total = 0L;
+            for(var i = 1; i <= 999; i++)
+            {
+                total += exponent10(i, i);
+            }
+            var totalStr = total.ToString();
+            total = long.Parse(totalStr.Substring(totalStr.Length - 10, 10));
+            Console.WriteLine(total);
+            Console.ReadLine();
+        }
+
+        public static long exponent10(int baseNum, int expNum)
+        {
+            var result = baseNum.ToString();
+            for (var i = 1; i < expNum; i++)
+            {
+                var temp = long.Parse(result);
+                temp *= baseNum;
+                result = temp.ToString();
+                if (result.Length > 10)
+                {
+                    result = result.Substring(result.Length - 10, 10);
+                }
+            }
+            return long.Parse(result);
+        }
+    }
